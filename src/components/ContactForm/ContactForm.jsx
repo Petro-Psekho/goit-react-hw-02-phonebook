@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
 const pattern = "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 const title =
@@ -9,9 +9,9 @@ const initialValues = {
   name: '',
 };
 
-// const schema = yup
-//   .object()
-//   .shape({ name: yup.string().required().notOneOf(['1']) });
+const validationSchema = yup.object({
+  name: yup.string().required(title),
+});
 
 export const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
@@ -23,7 +23,7 @@ export const ContactForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={schema}
+      validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       <Form>
@@ -32,9 +32,9 @@ export const ContactForm = () => {
           <Field
             type="text"
             name="name"
-            pattern={pattern}
-            title={title}
-            required
+            // pattern={pattern}
+            // title={title}
+            // required
           />
         </label>
         <button type="submit">Add contact</button>
