@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { ErrMessage } from 'components/ContactForm/ContactForm.styled';
 
 const pattern = "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 const title =
@@ -30,6 +31,7 @@ export const ContactForm = () => {
         <label htmlFor="name">
           Name
           <Field
+            autoComplete="off"
             type="text"
             name="name"
             // pattern={pattern}
@@ -38,7 +40,9 @@ export const ContactForm = () => {
           />
         </label>
         <button type="submit">Add contact</button>
-        <ErrorMessage component="div" name="name" />
+        <ErrMessage>
+          <ErrorMessage name="name" />
+        </ErrMessage>
       </Form>
     </Formik>
   );
