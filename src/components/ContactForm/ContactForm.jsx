@@ -10,7 +10,7 @@ const initialValues = {
 };
 
 const validationSchema = yup.object({
-  name: yup.string().required(title),
+  name: yup.string().required().matches(pattern, title),
 });
 
 export const ContactForm = () => {
