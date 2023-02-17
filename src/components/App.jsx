@@ -1,5 +1,23 @@
-import { Container } from 'components/App.styled';
+import React, { Component } from 'react';
 
-export const App = () => {
-  return <Container>React homework template</Container>;
-};
+import { Container } from 'components/App.styled';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+
+class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+
+  render() {
+    return (
+      <Container>
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h2>Contacts</h2>
+      </Container>
+    );
+  }
+}
+
+export default App;
