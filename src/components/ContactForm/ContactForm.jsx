@@ -1,28 +1,45 @@
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
+
+const pattern = "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
+const title =
+  "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
+
+const initialValues = {
+  name: '',
+};
+
+const schema = yup
+  .object()
+  .shape({ name: yup.string().required().notOneOf(['1']) });
 
 export const ContactForm = () => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    const { name } = e.target.elements;
-    console.log(name.value);
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+
+    resetForm();
   };
 
   return (
-    <div>
-      <form action="Submit" onSubmit={handleSubmit}>
-        <label htmlFor="Name">
+    <Formik
+      initialValues={initialValues}
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+    >
+      <Form>
+        <label htmlFor="name">
           Name
-          <input
+          <Field
             type="text"
             name="name"
-            // onChange={handleInputChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
+            // pattern={pattern}
+            // title={title}
+            // required
           />
         </label>
         <button type="submit">Add contact</button>
-      </form>
-    </div>
+        <ErrorMessage component="div" name="name" />
+      </Form>
+    </Formik>
   );
 };
