@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
+import { MdDeleteForever } from 'react-icons/md';
+
+import {
+  ListItem,
+  DeleteContactItem,
+  ContactItem,
+} from 'components/ContactListItem/ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
-    <li key={id}>
-      <p>
+    <ListItem key={id}>
+      <ContactItem>
         {name}: {number}
-      </p>
+      </ContactItem>
 
-      <button type="button" onClick={() => onDelete(id)}>
-        delete
-      </button>
-    </li>
+      <DeleteContactItem onClick={() => onDelete(id)}>
+        <MdDeleteForever size={20} color={'lightCoral'} />
+      </DeleteContactItem>
+    </ListItem>
   );
 };
 

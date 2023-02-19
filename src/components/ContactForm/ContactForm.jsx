@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import {
   ErrMessage,
   FormWrap,
+  FormInput,
   InputName,
   SubmitBtn,
 } from 'components/ContactForm/ContactForm.styled';
@@ -56,7 +57,7 @@ class ContactForm extends Component {
         <FormWrap>
           <InputName>
             Name
-            <Field autoComplete="off" type="text" name="name" />
+            <FormInput autoComplete="off" type="text" name="name" />
           </InputName>
 
           <ErrMessage>
@@ -64,7 +65,7 @@ class ContactForm extends Component {
           </ErrMessage>
           <InputName>
             Number
-            <Field autoComplete="off" type="tel" name="number" />
+            <FormInput autoComplete="off" type="tel" name="number" />
           </InputName>
 
           <ErrMessage>

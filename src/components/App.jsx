@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-import { Container, Title } from 'components/App.styled';
+import {
+  Container,
+  Title,
+  ContactsTitle,
+  FindContactsTitle,
+} from 'components/App.styled';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
@@ -56,8 +61,8 @@ class App extends Component {
         <div>
           <Title>Phonebook</Title>
           <ContactForm onSubmit={this.formSubmitData} />
-          <h2>Contacts</h2>
-          <h2>Find contacts by name</h2>
+          <ContactsTitle>Contacts</ContactsTitle>
+          <FindContactsTitle>Find contacts by name</FindContactsTitle>
           <Filter value={filter} onChange={this.changeFilter} />
           {contacts.length ? (
             <ContactList
