@@ -23,7 +23,6 @@ class App extends Component {
   };
 
   formSubmitData = data => {
-    console.log(data);
     const currentName = this.state.contacts.find(
       item => item.name.toLowerCase() === data.name.toLowerCase()
     );
